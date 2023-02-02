@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.items {
+    display: flex;
+    justify-content: center;
+
+}
+
+.box {
+    width: 300px;
+    margin: 50px;
+}
+
+.button {
+    cursor: pointer;
+    position: absolute;
+
+}
+
+.image:hover .button {
+    display: block;
+}
+
+.cross {
+    margin-left: 15px;
+    font-weight: bold;
+    float: right;
+    font-size: 26px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}

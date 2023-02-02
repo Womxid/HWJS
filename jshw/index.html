@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Дан макет сайта https://www.figma.com/file/mnLY69cYE5cqWM5w6n5hXx/Seo-%26-Digital-Marketing-Landing-Page?node-id=4203%3A2&t=q4NMnXTnwyyTSGA6-0
+
+На предыдущем уроке вы сформировали данные из раздела товары
+
+При клике на кнопку add to cart у товара под блоком с акциями появляется раздел Cart items
+
+В разделе Cart items появляются товары, добавленные в корзину
+
+При добавлении товара, он должен добавляться в существующий,
+ если он есть, либо создать новый, если его нет
+
+При клике на крестик, товар удаляется из раздела корзины,
+ если удалить все товары, раздел полностью пропадает. -->
+
+    <div class="content"></div>
+    <div class="items"></div>
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataInfo);
+        data.forEach(element => {
+            const itemsEl = document.querySelector('.items');
+            const contentEl = document.querySelector('.content');
+            const imgEl = document.createElement("img");
+            imgEl.classList.add("image");
+            const headEl = document.createElement("h3");
+            headEl.classList.add("head");
+            const descrEl = document.createElement("p");
+            descrEl.classList.add("descr");
+            const priseEl = document.createElement("h4");
+            priseEl.classList.add("prise");
+            const buttonEl = document.createElement("button");
+            buttonEl.classList.add("button");
+            const boxEl = document.createElement("div");
+
+
+
+            headEl.textContent = element.name;
+            descrEl.textContent = element.description;
+            priseEl.textContent = element.price;
+            buttonEl.textContent = "add to cart";
+            boxEl.className = element.product;
+            imgEl.src = element.url;
+            imgEl.width = element.width;
+            imgEl.height = element.height;
+            boxEl.classList.add("box");
+
+            boxEl.appendChild(imgEl);
+            boxEl.appendChild(buttonEl);
+            boxEl.appendChild(headEl);
+            boxEl.appendChild(descrEl);
+            boxEl.appendChild(priseEl);
+            contentEl.appendChild(boxEl);
+
+            console.log(buttonEl);
+            const count = 0;
+            buttonEl.addEventListener('click', function (e) {
+                const cardItems = document.createElement("div");
+                const crossEl = document.createElement("cross");
+                crossEl.classList.add("cross")
+                const headerCardItems = document.createElement("h2");
+                headerCardItems.textContent = "Card items";
+                crossEl.textContent = "×";
+                itemsEl.appendChild(cardItems);
+                cardItems.appendChild(crossEl);
+                cardItems.appendChild(headerCardItems);
+                cardItems.appendChild(boxEl);
+
+
+
+
+                // count++;
+                // if (count > 0 && count < 2) cardItems.appendChild(headerCardItems)
+                // else cardItems.remove()
+                crossEl.addEventListener('click', function (e) {
+                    e.target.parentNode.remove()
+                });
+
+            });
+
+        });
+
+
+    </script>
+</body>
+
+</html>
